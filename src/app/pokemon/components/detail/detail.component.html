@@ -1,0 +1,14 @@
+<mat-card *ngIf="detail.name">
+    <mat-card-header>
+        <mat-card-title>
+            {{detail.name}}
+        </mat-card-title>
+    </mat-card-header>
+    <img mat-card-image [src]="renderImage(detail)" [alt]="detail.name">
+    <mat-card-content>
+        <article>
+            <h2>Type</h2>
+            <p>{{types}}</p>
+        </article>
+    </mat-card-content>
+</mat-card>

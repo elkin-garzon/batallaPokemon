@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceService } from '../../services/service.service';
-import { Subscription } from 'rxjs';
+import { Pokemon } from '../../models/pokemon';
+import { StoreService } from '../../services/store.service';
 
 @Component({
 	selector: 'app-list',
@@ -9,25 +10,29 @@ import { Subscription } from 'rxjs';
 })
 export class ListComponent implements OnInit {
 
-	private arraySubscription: Subscription[] = [];
-	private rows: any[] = []
+	public rows: Pokemon[] = [];
+	public detailData: Pokemon = new Pokemon();
 
 	constructor(
-		private service: ServiceService
+		private service: ServiceService,
+		private store: StoreService
 	) {
 
 	}
 
 	ngOnInit(): void {
-		this.arraySubscription.push(
-			this.service.getData().subscribe((resp: any) => {
-				this.rows = resp.results;
-				console.log(this.rows)
-			})
-		)
+		this.service.getData().subscribe((resp: any) => {
+			this.rows = resp.results;
+		})
 	}
 
-	ngOnDestroy(): void {
-		this.arraySubscription.forEach(subscription => subscription.unsubscribe());
+
+	renderImage(row: Pokemon) {
+		return this.service.renderImage(row);
+	}
+
+	detail(row: Pokemon) {
+		this.detailData = row;
+		this.store.detailPokemon(this.detailData);
 	}
 }
