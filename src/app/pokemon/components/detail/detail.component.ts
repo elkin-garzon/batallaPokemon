@@ -13,6 +13,8 @@ export class DetailComponent implements OnInit {
 	public detailPokemon$ = this.store.changePokemon$;
 	public detail: any;
 	public types: string;
+	public stats: any[];
+	public displayedColumns: string[] = ['name', 'base_stat', 'effort'];
 
 	constructor(
 		private service: ServiceService,
@@ -32,7 +34,7 @@ export class DetailComponent implements OnInit {
 		if (row.name) {
 			this.service.getDetail(row).subscribe((resp: any) => {
 				this.types = String(resp.types.map((map: any) => String(map.type.name)));
-				console.log()
+				this.stats = resp.stats;
 			})
 		}
 	}

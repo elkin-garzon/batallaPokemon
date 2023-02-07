@@ -1,14 +1,33 @@
-<mat-card *ngIf="detail.name">
+<mat-card *ngIf="detail.name" class="box-scroll">
     <mat-card-header>
-        <mat-card-title>
+        <mat-card-title class="title-detail">
             {{detail.name}}
         </mat-card-title>
     </mat-card-header>
     <img mat-card-image [src]="renderImage(detail)" [alt]="detail.name">
     <mat-card-content>
         <article>
-            <h2>Type</h2>
-            <p>{{types}}</p>
+            <h2>Type: <span>{{types}}</span> </h2>
         </article>
+        <table mat-table [dataSource]="stats" class="mat-elevation-z8">
+
+            <ng-container matColumnDef="base_stat">
+                <th mat-header-cell *matHeaderCellDef> base stat </th>
+                <td mat-cell *matCellDef="let element"> {{element.base_stat}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="effort">
+                <th mat-header-cell *matHeaderCellDef> effort </th>
+                <td mat-cell *matCellDef="let element"> {{element.effort}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> name </th>
+                <td mat-cell *matCellDef="let element"> {{element.stat.name}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
     </mat-card-content>
 </mat-card>

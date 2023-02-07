@@ -26,7 +26,6 @@ export class ListComponent implements OnInit {
 		})
 	}
 
-
 	renderImage(row: Pokemon) {
 		return this.service.renderImage(row);
 	}

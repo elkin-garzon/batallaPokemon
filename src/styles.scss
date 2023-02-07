@@ -28,3 +28,18 @@ body {
     background: #ffcd00;
     border-radius: 5px;
 }
+.box-scroll{
+    height: 90vh;
+    overflow-y: scroll;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 5px;
+}
+
+mat-card{
+    mat-card-header{
+        display: block !important;
+        mat-card-title{
+            text-align: center;
+        }
+    }
+}

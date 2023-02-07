@@ -1,9 +1,28 @@
-article{
-    h2{
-        font-size: 35px;
+mat-card {
+    img{
+        width: 80%;
+        height: auto;
+        margin: 0 auto;
     }
-    p{
-        font-size: 30px;
-        font-weight: lighter;
+    mat-card-header{
+        mat-card-title {
+            font-size: 35px;
+            text-transform: capitalize;
+        }
+    }
+    mat-card-content{
+        article{
+            margin-bottom: 20px;
+            h2{
+                font-size: 35px;
+                span{
+                    font-size: 25px;
+                }
+            }
+            p{
+                font-size: 30px;
+                font-weight: lighter;
+            }
+        }
     }
 }
