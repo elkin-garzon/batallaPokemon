@@ -12,17 +12,24 @@ export class ListComponent implements OnInit {
 
 	public rows: Pokemon[] = [];
 	public detailData: Pokemon = new Pokemon();
+	public battleRowsPokemons$: any;
+	public rowsBattle: Pokemon[] = [];
 
 	constructor(
 		private service: ServiceService,
 		private store: StoreService
 	) {
-
+		this.battleRowsPokemons$ = this.store.changeRowsPokemon$;
 	}
 
 	ngOnInit(): void {
 		this.service.getData().subscribe((resp: any) => {
 			this.rows = resp.results;
+		});
+
+		this.battleRowsPokemons$.subscribe((resp: Pokemon[]) => {
+			this.rowsBattle = resp;
+
 		})
 	}
 
@@ -33,5 +40,13 @@ export class ListComponent implements OnInit {
 	detail(row: Pokemon) {
 		this.detailData = row;
 		this.store.detailPokemon(this.detailData);
+		this.store.battlePokemons(this.detailData);
+	}
+
+	addClassSelected(row: Pokemon) {
+		if (this.rowsBattle.filter((fil: Pokemon) => fil.name === row.name).length > 0) {
+			return true;
+		}
+		return false
 	}
 }

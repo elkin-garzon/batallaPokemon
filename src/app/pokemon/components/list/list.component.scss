@@ -1,9 +1,12 @@
-.card-pokemon{
+.card-pokemon {
     padding: 15px;
     cursor: pointer;
-    
-    .btn-detail{
+
+    .btn-detail {
         width: 100%;
         background: #ffcd00;
     }
+}
+.selected{
+    border: 3px solid #ffcd00;
 }

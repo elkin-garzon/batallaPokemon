@@ -1,9 +1,15 @@
 <br>
 <div class="row">
+    <div class="col-md-12 battle">
+        <app-battle></app-battle>
+    </div>
+</div>
+<br>
+<div class="row">
     <div class="col-md-8 box-scroll">
         <div class="row">
             <div class="col-md-4 card-pokemon" *ngFor="let row of rows" (click)="detail(row)">
-                <mat-card>
+                <mat-card [ngClass]="addClassSelected(row)?'selected': ''">
                     <mat-card-header>
                         <mat-card-title>{{row.name}}</mat-card-title>
                     </mat-card-header>

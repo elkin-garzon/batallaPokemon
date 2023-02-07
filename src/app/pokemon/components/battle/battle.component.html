@@ -1,0 +1,11 @@
+<h3>Batalla Pokemon</h3>
+<div class="row">
+    <ng-container *ngFor="let row of rowsBattle;  let i = index">
+        <div class="col-md-6">
+            <figure>
+                <img mat-card-image [src]="renderImage(row)" [alt]="row.name">
+            </figure>
+        </div>
+    </ng-container>
+
+</div>
