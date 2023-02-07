@@ -23,6 +23,16 @@ const fakeServiceService = jasmine.createSpyObj<ServiceService>(
 		getData: of(dataResponse)
 	}
 );
+const rowbattle = [
+	{
+		name: 'venusaur',
+		url: 'https://pokeapi.co/api/v2/pokemon/3/'
+	},
+	{
+		name: 'charizard',
+		url: 'https://pokeapi.co/api/v2/pokemon/6/'
+	}
+]
 const pokemon = { name: 'charizard', url: 'https://pokeapi.co/api/v2/pokemon/6/' };
 describe('ListComponent', () => {
 	let component: ListComponent;
@@ -60,6 +70,16 @@ describe('ListComponent', () => {
 		fixture.detectChanges();
 
 		component.detail(pokemon);
+		expect(component).toBeTruthy();
+	});
+
+	it('addClassSelected', () => {
+		fixture = TestBed.createComponent(ListComponent);
+		component = fixture.componentInstance;
+		fixture.detectChanges();
+
+		component.rowsBattle = rowbattle;
+		component.addClassSelected(pokemon);
 		expect(component).toBeTruthy();
 	});
 });

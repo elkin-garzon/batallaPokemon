@@ -12,7 +12,7 @@ export class StoreService {
 	private changePokemon = new BehaviorSubject<Pokemon>(new Pokemon());
 	public changePokemon$ = this.changePokemon.asObservable();
 
-	private rowsPokemon: Pokemon[] = [];
+	public rowsPokemon: Pokemon[] = [];
 	private changeRowsPokemon = new BehaviorSubject<Pokemon[]>([]);
 	public changeRowsPokemon$ = this.changeRowsPokemon.asObservable();
 
