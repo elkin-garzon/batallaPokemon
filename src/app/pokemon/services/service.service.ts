@@ -24,13 +24,6 @@ export class ServiceService {
 		return this.HttpClient.get<any>(`${environment.url_base}/${row.name}`);
 	}
 
-	getType(row: Pokemon) {
-		return this.HttpClient.get<any>(`${environment.type}/${row.name}`);
-	}
-
-
-
-
 	renderImage(row: Pokemon) {
 		return `../../../../assets/img_pokemons/${Pokemon.clone(row)}.png`;
 	}

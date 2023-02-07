@@ -10,16 +10,18 @@ import { StoreService } from '../../services/store.service';
 })
 export class DetailComponent implements OnInit {
 
-	public detailPokemon$ = this.store.changePokemon$;
+	public detailPokemon$: any;
 	public detail: any;
 	public types: string;
 	public stats: any[];
-	public displayedColumns: string[] = ['name', 'base_stat', 'effort'];
+	public displayedColumns: string[];
 
 	constructor(
 		private service: ServiceService,
 		private store: StoreService
 	) {
+		this.detailPokemon$ = this.store.changePokemon$;
+		this.displayedColumns = ['name', 'base_stat', 'effort']
 	}
 
 	ngOnInit() {
