@@ -1,17 +1,49 @@
-
-h3{
+h3 {
     font-size: 35px;
     text-align: center;
     padding: 10px;
     margin: 0;
 }
-figure{
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-    img{
+
+h2 {
+    text-align: center;
+    text-transform: capitalize;
+}
+
+.content-btn {
+    text-align: center;
+    min-height: 50px;
+}
+
+figure {
+    display: block;
+    text-align: center;
+    img {
         width: 25%;
         height: auto;
         margin: 0 auto;
     }
+}
+p{
+    color: #fff;
+    display: block;
+    text-align: center;
+    font-size: 25px;
+    font-weight: 400;
+    padding: 10px;
+    margin: 0;
+    &.tie{
+       color: #000;
+    }
+}
+.content-battle{
+    border-radius: 10px;
+    padding: 10px;
+}
+.win {
+    background: #198754;
+}
+
+.loser {
+    background: #dc3545;
 }

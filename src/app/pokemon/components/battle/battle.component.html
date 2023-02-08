@@ -1,11 +1,24 @@
 <h3>Batalla Pokemon</h3>
+<div class="content-btn">
+    <button mat-raised-button [disabled]="rowsBattle.length != 2" *ngIf="rowsBattle.length == 2"  (click)="runBattle()">Iniciar Batalla</button>
+</div>
 <div class="row">
-    <ng-container *ngFor="let row of rowsBattle;  let i = index">
-        <div class="col-md-6">
+    <div class="col-md-6" *ngFor="let row of rowsBattle;  let i = index">
+        <div class="content-battle" [ngClass]="row.win == true?'win': ''" [ngClass]="row.win == false?'loser': ''" >
+            <h2> {{ row.name }}</h2>
             <figure>
                 <img mat-card-image [src]="renderImage(row)" [alt]="row.name">
             </figure>
-        </div>
-    </ng-container>
+            <p *ngIf="row.win == true">
+                Ganador
+            </p>
+            <p *ngIf="row.win == false">
+                Perdedor
+            </p>
 
+            <p *ngIf="row.tie" class="tie">
+                Empate
+            </p>
+        </div>
+    </div>
 </div>

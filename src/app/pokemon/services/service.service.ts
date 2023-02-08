@@ -27,4 +27,8 @@ export class ServiceService {
 	renderImage(row: Pokemon) {
 		return `../../../../assets/img_pokemons/${Pokemon.clone(row)}.png`;
 	}
+
+	async getUrl(url: string): Promise<any> {
+		return this.HttpClient.get<any>(url).toPromise();
+	}
 }
