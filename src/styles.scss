@@ -33,12 +33,14 @@ body {
     overflow-y: scroll;
     border: 1px solid rgba(0, 0, 0, 0.12);
     border-radius: 5px;
+    min-height: 630px;
 }
 .battle{
     height: 40vh;
     overflow-y: scroll;
     border: 1px solid rgba(0, 0, 0, 0.12);
     border-radius: 5px;
+    min-height: 380px;
 }
 
 mat-card{

@@ -79,21 +79,12 @@ export class BattleComponent implements OnInit {
 						this.rowsBattle[index].count.push(this.half_damage_from)
 					}
 
-					if (damage.no_damage_from.filter((fil: any) => fil.name === types.type.name).length > 0) {
-						this.rowsBattle[index].count.push(this.no_damage_from)
-					}
-
-
 					if (damage.double_damage_to.filter((fil: any) => fil.name === types.type.name).length > 0) {
 						this.rowsBattle[index].count.push(this.double_damage_to)
 					}
 
 					if (damage.half_damage_to.filter((fil: any) => fil.name === types.type.name).length > 0) {
 						this.rowsBattle[index].count.push(this.half_damage_to)
-					}
-
-					if (damage.no_damage_to.filter((fil: any) => fil.name === types.type.name).length > 0) {
-						this.rowsBattle[index].count.push(this.no_damage_to)
 					}
 				}
 			}
