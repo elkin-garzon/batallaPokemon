@@ -73,6 +73,12 @@ describe('ServiceService', () => {
 		service.renderImage(pokemon);
 	});
 
-
+	it('getUrl service', (done: DoneFn) => {
+		httpClientSpy.get.and.returnValue(of({}));
+		service.getUrl('https://pokeapi.co/api/v2/pokemon/6/').then(resp => {
+			expect(resp).toEqual(dataResponse)
+			done()
+		})
+	});
 
 });

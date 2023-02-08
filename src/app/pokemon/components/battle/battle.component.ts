@@ -11,7 +11,6 @@ import { StoreService } from '../../services/store.service';
 })
 export class BattleComponent implements OnInit {
 
-	public battleRowsPokemons$: any;
 	public rowsBattle: any[] = [];
 
 	public double_damage_from: Number = -70;
@@ -22,14 +21,13 @@ export class BattleComponent implements OnInit {
 	public no_damage_to: Number = 0;
 
 	constructor(
-		private store: StoreService,
-		private service: ServiceService,
+		public store: StoreService,
+		public service: ServiceService,
 	) {
-		this.battleRowsPokemons$ = this.store.changeRowsPokemon$;
 	}
 
-	ngOnInit(): void {
-		this.battleRowsPokemons$.subscribe((resp: any[]) => {
+	ngOnInit() {
+		this.store.changeRowsPokemon$.subscribe((resp: any) => {
 			if (resp.length > 0) {
 				this.rowsBattle = resp;
 				for (let row of this.rowsBattle) {
@@ -47,14 +45,19 @@ export class BattleComponent implements OnInit {
 
 	async runBattle() {
 		for (let row of this.rowsBattle) {
-			row.types = await this.service.getUrl(row.url).then((resp: any) => { return resp.types });
+			row.types = await this.addTypes(row.url, 'types');
 			row.damage = new Array();
 			for (let damage of row.types) {
-				row.damage.push(await this.service.getUrl(damage.type.url).then((resp: any) => { return resp.damage_relations }));
+				row.damage.push( await  this.addTypes(damage.type.url, 'damage_relations'))
 			}
 			row.count = new Array()
 		}
 		await this.countPointsForbattle();
+
+	}
+
+	async addTypes(url: string, key: string) {
+		return await this.service.getUrl(url).then((resp: any) => { return resp[key] });
 	}
 
 	async countPointsForbattle() {
@@ -110,14 +113,6 @@ export class BattleComponent implements OnInit {
 			this.rowsBattle[0].win = false;
 			this.rowsBattle[1].win = true
 		}
-		/*if(this.rowsBattle[0].valueBattle > this.rowsBattle[1].valueBattle){
-			this.rowsBattle[0].win = true;
-			this.rowsBattle[1].win = false
-		}else{
-			this.rowsBattle[0].win = false;
-			this.rowsBattle[1].win = true
-		}*/
-		console.log(this.rowsBattle)
 	}
 }
 
